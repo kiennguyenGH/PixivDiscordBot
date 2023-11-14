@@ -22,7 +22,7 @@ json_result = api.illust_recommended()
 async def on_ready():
 	print("Bot is starting...")
 	print("-------------------")
-	print(api.refresh_token)
+	
 
 @client.command()
 async def search(ctx, arg):
