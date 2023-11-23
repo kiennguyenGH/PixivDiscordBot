@@ -37,5 +37,11 @@ class IllustSearch(commands.Cog):
 			await ctx.send(embed = embed, file = image)
 		os.remove('image.jpg')
 
+	@commands.Cog.listener()
+	async def on_command_error(self, ctx, error):
+		if isinstance(error, commands.CommandInvokeError):
+			if isinstance(error.original, AttributeError):
+				await ctx.send("Error: Image does not exist.")
+
 async def setup(client):
 	await client.add_cog(IllustSearch(client))
